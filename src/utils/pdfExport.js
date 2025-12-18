@@ -87,13 +87,13 @@ export const exportToPDF = async (elementId, fileName) => {
     // Wait for layout to stabilize
     await new Promise((resolve) => setTimeout(resolve, 300));
 
-    // Create canvas from HTML element with 1:1 scale
+    // Create canvas from HTML element with fixed desktop width for mobile compatibility
     const canvas = await html2canvas(element, {
-      scale: 1, // 1:1 ratio - no scaling
+      scale: 2, // Higher scale for better quality
       useCORS: true,
       logging: false,
       backgroundColor: "#ffffff",
-      windowWidth: element.scrollWidth,
+      windowWidth: 1200, // Fixed desktop width for consistent output on mobile
       windowHeight: element.scrollHeight,
     });
 
