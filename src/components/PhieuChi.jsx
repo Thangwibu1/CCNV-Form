@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { exportToPDF } from "../utils/pdfExport";
+import logoImg from "../assets/logo.jpg";
 
 function PhieuChi() {
   const [formData, setFormData] = useState({
