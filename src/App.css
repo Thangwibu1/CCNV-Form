@@ -1,0 +1,460 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #2563eb;
+  --primary-hover: #1d4ed8;
+  --bg-color: #f5f5f5;
+  --text-primary: #000000;
+  --text-secondary: #666666;
+  --border-color: #000000;
+  --form-bg: #ffffff;
+}
+
+body {
+  font-family: "Times New Roman", Times, serif;
+  background: var(--bg-color);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.app {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.header p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tab {
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 6px;
+  background: white;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.tab:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.tab.active {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+}
+
+.content {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.form-container {
+  background: white;
+  border-radius: 8px;
+  padding: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Form styling to match original documents */
+#phieu-thu-form,
+#phieu-chi-form,
+#phieu-nhap-kho-form,
+#phieu-xuat-kho-form {
+  background: white;
+  padding: 2.5cm;
+  font-family: "Times New Roman", Times, serif;
+  color: black;
+  line-height: 1.5;
+  max-width: 21cm;
+  margin: 0 auto;
+  display: block;
+}
+
+.form-header {
+  margin-bottom: 1.5rem;
+  color: black;
+}
+
+.form-header h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 1rem 0;
+  color: black;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.form-header p {
+  color: black;
+  font-size: 0.9rem;
+  margin: 0.25rem 0;
+}
+
+.form-section {
+  margin-bottom: 1.5rem;
+}
+
+.form-section h3 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: black;
+  font-weight: bold;
+}
+
+.form-row {
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-bottom: 0.8rem;
+}
+
+.form-group label {
+  font-size: 0.95rem;
+  color: black;
+  font-weight: normal;
+}
+
+/* Global input and textarea styling */
+input,
+textarea,
+select {
+  font-family: "Times New Roman", Times, serif !important;
+  color: black !important;
+  background: transparent !important;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  padding: 0.2rem 0;
+  border: none;
+  border-bottom: 1px dotted black;
+  background: transparent;
+  color: black;
+  font-size: 0.95rem;
+  font-family: "Times New Roman", Times, serif;
+  outline: none;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  min-height: 1.2em;
+  line-height: 1.4;
+}
+
+.form-group input::placeholder {
+  color: transparent;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-bottom: 1px dotted black;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 60px;
+  border: 1px dotted black;
+  padding: 0.5rem;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.table-container {
+  overflow-x: auto;
+  margin: 1rem 0;
+  border: 1px solid black;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  font-size: 0.9rem;
+}
+
+thead {
+  background: white;
+}
+
+th {
+  padding: 0.5rem;
+  text-align: center;
+  font-weight: bold;
+  border: 1px solid black;
+  color: black;
+  font-size: 0.85rem;
+  line-height: 1.3;
+}
+
+td {
+  padding: 0.4rem;
+  border: 1px solid black;
+  text-align: center;
+}
+
+td input {
+  width: 100%;
+  padding: 0.3rem;
+  border: none;
+  background: transparent;
+  color: black;
+  font-size: 0.9rem;
+  font-family: "Times New Roman", Times, serif;
+  text-align: center;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  line-height: 1.3;
+  min-width: 60px;
+}
+
+td input:focus {
+  outline: 1px solid #ccc;
+  background: #f9f9f9;
+}
+
+.table-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  padding: 0 2.5cm;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-primary {
+  background: var(--primary-color);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+}
+
+.btn-secondary {
+  background: #10b981;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: #059669;
+}
+
+.btn-danger {
+  background: #ef4444;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+}
+
+.btn-danger:hover {
+  background: #dc2626;
+}
+
+.signature-section {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 2rem;
+  margin-top: 2rem;
+  padding: 0 1rem;
+}
+
+.signature-box {
+  flex: 1;
+  text-align: center;
+  padding: 1rem;
+  min-width: 150px;
+  max-width: 200px;
+}
+
+.signature-box h4 {
+  font-size: 0.85rem;
+  margin-bottom: 0.25rem;
+  color: black;
+  font-weight: bold;
+  line-height: 1.3;
+}
+
+.signature-box p {
+  font-size: 0.8rem;
+  color: black;
+  font-style: italic;
+  margin-bottom: 2.5rem;
+  margin-top: 0.5rem;
+}
+
+.export-section {
+  padding: 1.5rem 2.5cm;
+  text-align: center;
+  background: #f9fafb;
+  border-top: 2px solid #e5e7eb;
+}
+
+/* Print styles for PDF export */
+@media print {
+  body {
+    background: white;
+  }
+
+  .app {
+    padding: 0;
+  }
+
+  .header,
+  .tabs,
+  .export-section,
+  .table-actions,
+  .btn,
+  button {
+    display: none !important;
+  }
+
+  .form-container {
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  #phieu-thu-form,
+  #phieu-chi-form,
+  #phieu-nhap-kho-form,
+  #phieu-xuat-kho-form {
+    padding: 1cm;
+  }
+
+  /* Remove all input styling in print */
+  input,
+  textarea,
+  select {
+    border: none !important;
+    background: transparent !important;
+    outline: none !important;
+    padding: 0 !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+    box-shadow: none !important;
+  }
+
+  td input {
+    border: none !important;
+    background: transparent !important;
+  }
+
+  /* Hide delete column in print */
+  table th:last-child,
+  table td:last-child {
+    display: none !important;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .app {
+    padding: 1rem;
+  }
+
+  .header h1 {
+    font-size: 1.8rem;
+  }
+
+  #phieu-thu-form,
+  #phieu-chi-form,
+  #phieu-nhap-kho-form,
+  #phieu-xuat-kho-form {
+    padding: 1rem;
+  }
+
+  .tabs {
+    gap: 0.25rem;
+    padding: 0.5rem;
+  }
+
+  .tab {
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .signature-section {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  table {
+    font-size: 0.75rem;
+  }
+
+  th,
+  td {
+    padding: 0.3rem;
+  }
+}
