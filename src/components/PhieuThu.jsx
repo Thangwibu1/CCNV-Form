@@ -47,7 +47,7 @@ function PhieuThu() {
           >
             <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
               <img
-                src="/src/assets/logo.jpg"
+                src={logoImg}
                 alt="Logo"
                 style={{
                   maxWidth: "100px",
