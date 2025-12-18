@@ -197,16 +197,6 @@ function PhieuNhapKho() {
                 style={{ width: "60px", margin: "0 5px" }}
               />
             </p>
-            <p style={{ margin: "5px 0" }}>
-              Số:
-              <input
-                type="text"
-                name="so"
-                value={formData.so}
-                onChange={handleChange}
-                style={{ width: "150px", marginLeft: "5px" }}
-              />
-            </p>
           </div>
         </div>
 
@@ -275,7 +265,7 @@ function PhieuNhapKho() {
                 <th rowSpan="2" style={{ width: "40px" }}>
                   STT
                 </th>
-                <th rowSpan="2">
+                <th rowSpan="2" style={{ minWidth: "150px" }}>
                   Tên, nhãn hiệu, quy cách, phẩm chất vật liệu, dụng cụ, sản
                   phẩm, hàng hoá
                 </th>
@@ -311,12 +301,12 @@ function PhieuNhapKho() {
                     />
                   </td>
                   <td>
-                    <input
-                      type="text"
+                    <textarea
                       value={item.tenNhanHieu}
                       onChange={(e) =>
                         handleItemChange(index, "tenNhanHieu", e.target.value)
                       }
+                      rows="2"
                       style={{ textAlign: "left" }}
                     />
                   </td>

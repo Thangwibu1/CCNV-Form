@@ -36,6 +36,8 @@ export const exportToPDF = async (elementId, fileName) => {
         padding: input.style.padding,
         boxShadow: input.style.boxShadow,
         color: input.style.color,
+        height: input.style.height,
+        overflow: input.style.overflow,
       };
 
       // Keep the text visible but remove borders
@@ -45,11 +47,43 @@ export const exportToPDF = async (elementId, fileName) => {
       input.style.outline = "none";
       input.style.boxShadow = "none";
       input.style.color = "black";
-      input.style.padding = "0";
+      input.style.padding = "0.5rem";
     });
 
-    // Wait a bit for styles to apply
-    await new Promise((resolve) => setTimeout(resolve, 200));
+    // Convert textareas to divs for better PDF rendering
+    const textareas = element.querySelectorAll("textarea");
+    const textareaReplacements = [];
+
+    textareas.forEach((textarea) => {
+      const div = document.createElement("div");
+      div.textContent = textarea.value;
+
+      // Copy computed styles
+      const computedStyle = window.getComputedStyle(textarea);
+      div.style.fontFamily = computedStyle.fontFamily;
+      div.style.fontSize = computedStyle.fontSize;
+      div.style.lineHeight = computedStyle.lineHeight;
+      div.style.padding = computedStyle.padding;
+      div.style.textAlign = computedStyle.textAlign;
+      div.style.color = "black";
+      div.style.whiteSpace = "pre-wrap";
+      div.style.wordWrap = "break-word";
+      div.style.overflow = "visible";
+      div.style.border = "none";
+      div.style.background = "transparent";
+      div.style.minHeight = "40px";
+
+      textareaReplacements.push({
+        original: textarea,
+        replacement: div,
+        parent: textarea.parentNode,
+      });
+
+      textarea.parentNode.replaceChild(div, textarea);
+    });
+
+    // Wait for layout to stabilize
+    await new Promise((resolve) => setTimeout(resolve, 300));
 
     // Create canvas from HTML element
     const canvas = await html2canvas(element, {
@@ -88,6 +122,11 @@ export const exportToPDF = async (elementId, fileName) => {
     // Save PDF
     pdf.save(`${fileName}.pdf`);
 
+    // Restore textareas
+    textareaReplacements.forEach(({ original, replacement, parent }) => {
+      parent.replaceChild(original, replacement);
+    });
+
     // Restore original styles
     buttons.forEach((btn) => (btn.style.display = ""));
     tableActions.forEach((ta) => (ta.style.display = ""));
@@ -102,6 +141,8 @@ export const exportToPDF = async (elementId, fileName) => {
       input.style.padding = originalStyles[index].padding;
       input.style.boxShadow = originalStyles[index].boxShadow;
       input.style.color = originalStyles[index].color;
+      input.style.height = originalStyles[index].height;
+      input.style.overflow = originalStyles[index].overflow;
     });
   } catch (error) {
     console.error("Error generating PDF:", error);
