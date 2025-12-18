@@ -87,9 +87,9 @@ export const exportToPDF = async (elementId, fileName) => {
     // Wait for layout to stabilize
     await new Promise((resolve) => setTimeout(resolve, 300));
 
-    // Create canvas from HTML element with adjusted scale
+    // Create canvas from HTML element with 1:1 scale
     const canvas = await html2canvas(element, {
-      scale: 1.5, // Reduced from 2 to maintain better proportions
+      scale: 1, // 1:1 ratio - no scaling
       useCORS: true,
       logging: false,
       backgroundColor: "#ffffff",
