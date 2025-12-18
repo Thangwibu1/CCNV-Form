@@ -40,7 +40,7 @@ export const exportToPDF = async (elementId, fileName) => {
         overflow: input.style.overflow,
       };
 
-      // Keep the text visible but remove borders
+      // Keep the text visible but remove borders for clean PDF
       input.style.border = "none";
       input.style.borderBottom = "none";
       input.style.background = "transparent";
@@ -87,9 +87,9 @@ export const exportToPDF = async (elementId, fileName) => {
     // Wait for layout to stabilize
     await new Promise((resolve) => setTimeout(resolve, 300));
 
-    // Create canvas from HTML element
+    // Create canvas from HTML element with adjusted scale
     const canvas = await html2canvas(element, {
-      scale: 2,
+      scale: 1.5, // Reduced from 2 to maintain better proportions
       useCORS: true,
       logging: false,
       backgroundColor: "#ffffff",

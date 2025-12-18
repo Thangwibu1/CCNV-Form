@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { exportToPDF } from "../utils/pdfExport";
-import logoImg from "../assets/logo.jpg";
+import logoImg from "../assets/logo.png";
 
 function PhieuNhapKho() {
   const [formData, setFormData] = useState({
@@ -118,7 +118,7 @@ function PhieuNhapKho() {
                     margin: 0,
                     fontSize: "16px",
                     fontWeight: "bold",
-                    color: "#1a5490",
+                    color: "#333",
                     letterSpacing: "0.5px",
                   }}
                 >
@@ -129,7 +129,7 @@ function PhieuNhapKho() {
                     margin: 0,
                     fontSize: "16px",
                     fontWeight: "bold",
-                    color: "#1a5490",
+                    color: "#333",
                     letterSpacing: "0.5px",
                   }}
                 >
@@ -391,24 +391,42 @@ function PhieuNhapKho() {
           </button>
         </div>
 
-        <div
-          style={{
-            textAlign: "center",
-            margin: "2rem 0 1rem",
-            fontSize: "13px",
-          }}
-        >
-          <p>Ngày ..... tháng ..... năm .....</p>
-        </div>
-
         <div className="signature-section">
           <div className="signature-box">
             <h4>THỦ KHO</h4>
             <p>(Ký, họ tên)</p>
+            <input
+              type="text"
+              placeholder="Nhập họ tên"
+              style={{
+                width: "100%",
+                marginTop: "60px",
+                padding: "0.3rem",
+                border: "none",
+                borderBottom: "1px solid black",
+                textAlign: "center",
+                background: "transparent",
+                fontSize: "0.9rem",
+              }}
+            />
           </div>
           <div className="signature-box">
             <h4>NGƯỜI LẬP BIỂU</h4>
             <p>(Ký, họ tên)</p>
+            <input
+              type="text"
+              placeholder="Nhập họ tên"
+              style={{
+                width: "100%",
+                marginTop: "60px",
+                padding: "0.3rem",
+                border: "none",
+                borderBottom: "1px solid black",
+                textAlign: "center",
+                background: "transparent",
+                fontSize: "0.9rem",
+              }}
+            />
           </div>
         </div>
       </div>
