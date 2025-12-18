@@ -68,6 +68,8 @@ export const exportToPDF = async (elementId, fileName) => {
       div.style.color = "black";
       div.style.whiteSpace = "pre-wrap";
       div.style.wordWrap = "break-word";
+      div.style.wordBreak = "break-word";
+      div.style.overflowWrap = "break-word";
       div.style.overflow = "visible";
       div.style.border = "none";
       div.style.background = "transparent";
